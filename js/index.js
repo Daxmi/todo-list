@@ -103,20 +103,23 @@ deleteButton.addEventListener("click", function (index)  {
 
 window.onload = function () {
     boy = JSON.parse(localStorage.getItem("todo-elements"));
-    boy.forEach((boys)=> {
-    let inputText = _("inputText");
-    inputText.appendChild(display(boys));
-    })
     girl = JSON.parse(localStorage.getItem("todo-elements2"));
-    girl.forEach((girls)=> {
-    let onGoingText = _("onGoingText")
-    onGoingText.appendChild(display(girls));
-    })
-    completed = JSON.parse(localStorage.getItem("todo-completed"));
-    completed.forEach((taskCompleted)=> {
-    let completedText = _("completedText")
-    completedText.appendChild(display(taskCompleted));
-    })
+    if (boy && girl) {
+        boy.forEach((boys)=> {
+        let inputText = _("inputText");
+        inputText.appendChild(display(boys));
+        })
+        girl.forEach((girls)=> {
+        let onGoingText = _("onGoingText")
+        onGoingText.appendChild(display(girls));
+        })
+        completed = JSON.parse(localStorage.getItem("todo-completed"));
+        completed.forEach((taskCompleted)=> {
+        let completedText = _("completedText")
+        completedText.appendChild(display(taskCompleted));
+        })
+    }
+  
 }
 
 function removeActive(Task) {
