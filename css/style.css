@@ -1,0 +1,126 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
+
+* {
+    margin: 0;
+}
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    height: 100px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    background-color: cadetblue;
+}
+header nav {
+    text-align: center;
+    width: 100%;
+}
+.navText {
+    margin: auto;
+}
+.navText h1 {
+    font-weight: 900;
+    font-size: 30px;
+    word-spacing: 5px;
+}
+.navText h2 {
+    font-size: 16px;
+    word-spacing: 5px;
+}
+/* .navImg {
+    width: 300px;
+    display: none;
+}
+.navImg img {
+    width: 100%;
+} */
+.taskButton {
+    text-align: center;
+
+}
+button {
+    padding: 8px;
+    border-radius:25em/1em;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 2px 2px #474747;
+    cursor: pointer;
+   
+}
+.taskButton button {
+    margin: 15px;
+}
+button:hover {
+   background-color: darkblue;
+   color: white;
+   transition: 0.5s ease-in;
+}
+.differentTasks {
+    display: flex;
+}
+.tasks {
+    background-color: beige;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    display: none;
+}
+.active {
+    display: inline;
+}
+.tasks h1 {
+    font-size: 14px;
+    font-weight: 900;
+}
+.tasks h5 {
+    margin: 15px;
+}
+.tasks input[type=text]  {
+    margin: auto;
+    border-radius: 5px;
+    outline: none;
+    display: block;
+    height: 25px;
+    width: 95%;
+}
+.tasks input[type=text] ::placeholder {
+    font-size: 15px;
+}
+.tasks button {
+    display: block;
+}
+.addNewTask {
+    margin: 10px 0 0 40px;
+}
+.inputText, .onGoingText, .completedText{
+    margin: 20px 0;
+    text-align: start;
+   /* display: flex; */
+}
+.moveToOngoing, .moveToCompleted, .delete{
+    margin: 20px 40px 20px auto;
+}
+.noDisplay {
+    display: none;
+}
+@media screen and (min-width: 998px) {
+    .taskButton button {
+        display: none;
+    }
+    .differentTasks {
+        margin-top: 40px;
+    }
+    .tasks {
+        width: 30%;
+    }
+    .tasks{
+        display: inline;
+    }
+}

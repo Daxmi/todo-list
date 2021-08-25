@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>todo list</title>
+</head>
+<body>
+    <header>
+        <nav class="navText">
+            <h1>
+                TO DO LIST
+            </h1>
+            <h2>
+                KEEP TRACK OF YOUR ACTIVITIES
+            </h2>
+        </nav>
+        <!-- <nav class="navImg">
+            <img src="/img/logo.jpg" alt="">
+        </nav> -->
+    </header>
+    <main>
+        <div class="taskButton">
+            <button type="submit" id="tasks1" class="displayToDo"> 
+                Display to-do
+            </button>
+            <button type="submit" id="tasks2" class="displayOngoing"> 
+                Display On-going
+            </button>
+            <button type="submit" id="tasks3" class="displayCompleted"> 
+                Display Completed
+            </button>
+        </div>
+        <div class="differentTasks">
+            <div class="tasks pTask active">
+                <h1>
+                    TASKS TO PERFORM
+                </h1>
+                <h5>
+                    CHECKED TASKS WILL BE MOVED TO ON-GOING TASKS
+                </h5>
+                <input type="text" id="myText" placeholder="Write To do here then click add new task">
+             
+                <button type="submit" class="addNewTask" id="addButton"> 
+                    Add new task
+                </button>
+                <div class="inputText" id="inputText">
+                
+                </div>
+                <button type="submit" id="moveButton" class="moveToOngoing"> 
+                    Move to Ongoing
+                </button>
+            </div>
+            <div class="tasks oTask" >
+                <h1>
+                    ON-GOING TASK(S)
+                </h1>
+                <h5>
+                    CHECKED TASKS WILL BE MOVED TO COMPLETED TASKS
+                </h5>
+                <div class="onGoingText" id="onGoingText">
+                
+                </div>
+                <button type="submit" id="completeButton" class="moveToCompleted"> 
+                    Move to Completed
+                </button>
+            </div>
+            <div class="tasks cTask" >
+                <h1>
+                    COMPLETED TASK(S)
+                </h1>
+                <h5>
+                    CHECKED TASKS WILL BE DELETED
+                </h5>
+                <div class="completedText" id="completedText">
+                    
+                </div>
+                
+                <button type="submit" id="deleteButton" class="delete"> 
+                    DELETE
+                </button>
+            </div>
+        </div>
+        
+    </main>
+    <script src="js/index.js"></script>
+</body>
+</html>
