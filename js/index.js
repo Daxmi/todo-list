@@ -40,9 +40,9 @@ task3.addEventListener("click", ()=> {
     removeActive(cTask)
 })
 
-let boy = [];
-let girl = [];
-let completed = [];
+const boy = [];
+const girl = [];
+const completed = [];
 
 addButton.addEventListener("click", ()=> {
     let word = document.getElementById("myText").value;
