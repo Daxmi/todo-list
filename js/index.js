@@ -103,19 +103,23 @@ deleteButton.addEventListener("click", function (index)  {
     })
 })
 window.addEventListener('load', (event) => {
-    boy = JSON.parse(localStorage.getItem("todo-elements"));
-    girl = JSON.parse(localStorage.getItem("todo-elements2"));
-    completed = JSON.parse(localStorage.getItem("todo-completed"));
-    if (boy && girl && completed) {
-        boy.forEach((boys)=> {
+    const localBoy = JSON.parse(localStorage.getItem("todo-elements"));
+    const localGirl = JSON.parse(localStorage.getItem("todo-elements2"));
+    const isCompleted = JSON.parse(localStorage.getItem("todo-completed"));
+    if (localBoy) {
+        localBoy.forEach((boys)=> {
         let inputText = _("inputText");
         inputText.appendChild(display(boys));
         })
-        girl.forEach((girls)=> {
+    }
+    if(localGirl){
+        localGirl.forEach((girls)=> {
         let onGoingText = _("onGoingText")
         onGoingText.appendChild(display(girls));
         })
-        completed.forEach((taskCompleted)=> {
+    }
+    if(isCompleted){
+        isCompleted.forEach((taskCompleted)=> {
         let completedText = _("completedText")
         completedText.appendChild(display(taskCompleted));
         })
