@@ -48,9 +48,11 @@ addButton.addEventListener("click", ()=> {
     let word = document.getElementById("myText").value;
     let inputText = _("inputText");
     if(word != ""){
-        let toUpperWord = word.charAt(0).toUpperCase() + word.slice(1);
-        inputText.appendChild(display(toUpperWord))
-        boy.push(toUpperWord);
+        // let toUpperWord = word.charAt(0).toUpperCase() + word.slice(1);
+        inputText.appendChild(display(word))
+        // console.log(toUpperWord);
+        boy.push(word);
+        console.log(boy);
         localStorage.setItem("todo-elements", JSON.stringify(boy));
     }
     document.getElementById("myText").value= "";
@@ -101,26 +103,26 @@ deleteButton.addEventListener("click", function (index)  {
     })
 })
 
-window.onload = function () {
-    boy = JSON.parse(localStorage.getItem("todo-elements"));
-    girl = JSON.parse(localStorage.getItem("todo-elements2"));
-    if (boy && girl) {
-        boy.forEach((boys)=> {
-        let inputText = _("inputText");
-        inputText.appendChild(display(boys));
-        })
-        girl.forEach((girls)=> {
-        let onGoingText = _("onGoingText")
-        onGoingText.appendChild(display(girls));
-        })
-        completed = JSON.parse(localStorage.getItem("todo-completed"));
-        completed.forEach((taskCompleted)=> {
-        let completedText = _("completedText")
-        completedText.appendChild(display(taskCompleted));
-        })
-    }
+// window.onload = function () {
+//     boy = JSON.parse(localStorage.getItem("todo-elements"));
+//     girl = JSON.parse(localStorage.getItem("todo-elements2"));
+//     if (boy && girl) {
+//         boy.forEach((boys)=> {
+//         let inputText = _("inputText");
+//         inputText.appendChild(display(boys));
+//         })
+//         girl.forEach((girls)=> {
+//         let onGoingText = _("onGoingText")
+//         onGoingText.appendChild(display(girls));
+//         })
+//         completed = JSON.parse(localStorage.getItem("todo-completed"));
+//         completed.forEach((taskCompleted)=> {
+//         let completedText = _("completedText")
+//         completedText.appendChild(display(taskCompleted));
+//         })
+//     }
   
-}
+// }
 
 function removeActive(Task) {
     tasks.forEach(task=>{
