@@ -102,27 +102,26 @@ deleteButton.addEventListener("click", function (index)  {
         }
     })
 })
+window.addEventListener('load', (event) => {
+    boy = JSON.parse(localStorage.getItem("todo-elements"));
+    girl = JSON.parse(localStorage.getItem("todo-elements2"));
+    completed = JSON.parse(localStorage.getItem("todo-completed"));
+    if (boy && girl && completed) {
+        boy.forEach((boys)=> {
+        let inputText = _("inputText");
+        inputText.appendChild(display(boys));
+        })
+        girl.forEach((girls)=> {
+        let onGoingText = _("onGoingText")
+        onGoingText.appendChild(display(girls));
+        })
+        completed.forEach((taskCompleted)=> {
+        let completedText = _("completedText")
+        completedText.appendChild(display(taskCompleted));
+        })
+    }
+});
 
-// window.onload = function () {
-//     boy = JSON.parse(localStorage.getItem("todo-elements"));
-//     girl = JSON.parse(localStorage.getItem("todo-elements2"));
-//     if (boy && girl) {
-//         boy.forEach((boys)=> {
-//         let inputText = _("inputText");
-//         inputText.appendChild(display(boys));
-//         })
-//         girl.forEach((girls)=> {
-//         let onGoingText = _("onGoingText")
-//         onGoingText.appendChild(display(girls));
-//         })
-//         completed = JSON.parse(localStorage.getItem("todo-completed"));
-//         completed.forEach((taskCompleted)=> {
-//         let completedText = _("completedText")
-//         completedText.appendChild(display(taskCompleted));
-//         })
-//     }
-  
-// }
 
 function removeActive(Task) {
     tasks.forEach(task=>{
