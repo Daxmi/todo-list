@@ -1,126 +1,144 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap'); */
 
 * {
-    margin: 0;
+  margin: 0;
 }
 body {
-    position: relative;
-    font-family: 'Roboto', sans-serif;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(224, 223, 223);
 }
 header {
-    height: 100px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    background-color: cadetblue;
+  height: 100px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(148, 16, 224);
 }
 header nav {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 .navText {
-    margin: auto;
+  margin: auto;
 }
 .navText h1 {
-    font-weight: 900;
-    font-size: 30px;
-    word-spacing: 5px;
+  font-weight: 900;
+  font-size: 30px;
+  word-spacing: 5px;
 }
 .navText h2 {
-    font-size: 16px;
-    word-spacing: 5px;
+  font-size: 16px;
+  word-spacing: 5px;
 }
-/* .navImg {
-    width: 300px;
-    display: none;
-}
-.navImg img {
-    width: 100%;
-} */
-.taskButton {
-    text-align: center;
 
+.taskButton {
+  text-align: center;
 }
 button {
-    padding: 8px;
-    border-radius:25em/1em;
-    font-size: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 2px 2px #474747;
-    cursor: pointer;
-   
+  padding: 8px;
+  border-radius: 25em/1em;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 2px 2px #474747;
+  cursor: pointer;
 }
 .taskButton button {
-    margin: 15px;
+  margin: 15px;
 }
 button:hover {
-   background-color: darkblue;
-   color: white;
-   transition: 0.5s ease-in;
+  background-color: rgb(148, 16, 224);
+  color: white;
+  transition: 0.5s ease-in;
 }
 .differentTasks {
-    display: flex;
+  display: flex;
+}
+.differentTasks h1,
+h5 {
+  text-align: center;
 }
 .tasks {
-    background-color: beige;
-    border-radius: 10px;
-    width: 90%;
-    margin: 0 auto;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-    display: none;
+  background-color: rgb(224, 223, 223);
+  border-radius: 10px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+
+  display: none;
+  box-shadow: 8px 2px 10px 1px rgb(167, 166, 166);
 }
 .active {
-    display: inline;
+  display: inline;
 }
 .tasks h1 {
-    font-size: 14px;
-    font-weight: 900;
+  font-size: 14px;
+  font-weight: 900;
 }
 .tasks h5 {
-    margin: 15px;
+  margin: 15px;
 }
-.tasks input[type=text]  {
-    margin: auto;
-    border-radius: 5px;
-    outline: none;
-    display: block;
-    height: 25px;
-    width: 95%;
+.tasks input[type="text"] {
+  margin: auto;
+  border: none;
+  border-bottom: 1px solid black;
+  background-color: rgb(224, 223, 223);
+  outline: none;
+  display: block;
+  height: 25px;
+  width: 95%;
+  padding-left: 5px;
 }
-.tasks input[type=text] ::placeholder {
-    font-size: 15px;
+.tasks input[type="text"] ::placeholder {
+  font-size: 15px;
+  padding-left: 5px;
 }
 .tasks button {
-    display: block;
+  display: block;
+}
+.moveTask {
+  padding: 2px;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  background-color: rgb(148, 16, 224);
+  cursor: pointer;
+}
+.moveTask:hover {
+  box-shadow: 1px 1px 1px 1px rgb(167, 166, 166);
 }
 .addNewTask {
-    margin: 10px 0 0 40px;
+  margin: 10px 0 0 40px;
 }
-.inputText, .onGoingText, .completedText{
-    margin: 20px 0;
-    text-align: start;
-   /* display: flex; */
+
+.taskText {
+  margin: 20px 0;
 }
-.moveToOngoing, .moveToCompleted, .delete{
-    margin: 20px 40px 20px auto;
+.tickedTask {
+  margin: 20px 40px 20px auto;
 }
 .noDisplay {
-    display: none;
+  display: none;
 }
 @media screen and (min-width: 998px) {
-    .taskButton button {
-        display: none;
-    }
-    .differentTasks {
-        margin-top: 40px;
-    }
-    .tasks {
-        width: 30%;
-    }
-    .tasks{
-        display: inline;
-    }
+  .taskButton button {
+    display: none;
+  }
+  .differentTasks {
+    margin-top: 40px;
+  }
+  .tasks {
+    width: 30%;
+  }
+  .tasks {
+    display: inline;
+  }
 }
