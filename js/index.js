@@ -10,6 +10,7 @@ function makeid(length) {
   return result;
 }
 
+
 const task1 = _("tasks1");
 const task2 = _("tasks2");
 const task3 = _("tasks3");
@@ -40,20 +41,25 @@ task3.addEventListener("click", () => {
   removeActive(cTask);
 });
 
-let boy = [];
-let girl = [];
+function removeActive(Task) {
+    tasks.forEach((task) => {
+      task.classList.remove("active");
+    });
+    Task.classList.add("active");
+}
+
+let task = [];
+let ongoing = [];
 let completed = [];
 
 addButton.addEventListener("click", () => {
-  let word = document.getElementById("myText").value;
+  let myTask = document.getElementById("myText").value;
   let inputText = _("inputText");
-  if (word != "") {
-    // let toUpperWord = word.charAt(0).toUpperCase() + word.slice(1);
-    inputText.appendChild(display(word));
-    // console.log(toUpperWord);
-    boy.push(word);
-    console.log(boy);
-    localStorage.setItem("todo-elements", JSON.stringify(boy));
+  if (myTask != "") {
+    inputText.appendChild(display(myTask));
+    task.push(myTask);
+    console.log(task);
+    localStorage.setItem("todo-elements", JSON.stringify(task));
   }
   document.getElementById("myText").value = "";
 });
@@ -63,10 +69,10 @@ moveButton.addEventListener("click", function (index) {
   checkBox.forEach((checkbox) => {
     if (checkbox.checked) {
       let parentText = checkbox.parentNode;
-      let shit = boy.splice(index, 1);
-      localStorage.setItem("todo-elements", JSON.stringify(boy));
-      girl.push(shit);
-      localStorage.setItem("todo-elements2", JSON.stringify(girl));
+      let shit = task.splice(index, 1);
+      localStorage.setItem("todo-elements", JSON.stringify(task));
+      ongoing.push(shit);
+      localStorage.setItem("todo-elements2", JSON.stringify(ongoing));
       let childText = parentText.children[1].children[0].textContent;
       let onGoingText = _("onGoingText");
       onGoingText.appendChild(display(childText));
@@ -80,10 +86,10 @@ completeButton.addEventListener("click", function (index) {
   checkBox.forEach((checkbox) => {
     if (checkbox.checked) {
       let parentText = checkbox.parentNode;
-      let complete = girl.splice(index, 1);
+      let complete = ongoing.splice(index, 1);
       completed.push(complete);
       localStorage.setItem("todo-completed", JSON.stringify(completed));
-      localStorage.setItem("todo-elements2", JSON.stringify(girl));
+      localStorage.setItem("todo-elements2", JSON.stringify(ongoing));
       let childText = parentText.children[1].children[0].textContent;
       let completedText = _("completedText");
       completedText.appendChild(display(childText));
@@ -96,26 +102,27 @@ deleteButton.addEventListener("click", function (index) {
   const checkBox = document.querySelectorAll(".checkBox");
   checkBox.forEach((checkbox) => {
     if (checkbox.checked) {
-      let deleted = completed.splice(index, 1);
       localStorage.setItem("todo-completed", JSON.stringify(completed));
       checkbox.parentNode.innerHTML = "";
     }
   });
 });
+
+//On reload, fetch from local storage
 window.addEventListener("load", (event) => {
-  const localBoy = JSON.parse(localStorage.getItem("todo-elements"));
-  const localGirl = JSON.parse(localStorage.getItem("todo-elements2"));
+  const localTask = JSON.parse(localStorage.getItem("todo-elements"));
+  const localOngoing = JSON.parse(localStorage.getItem("todo-elements2"));
   const isCompleted = JSON.parse(localStorage.getItem("todo-completed"));
-  if (localBoy) {
-    localBoy.forEach((boys) => {
+  if (localTask) {
+    localTask.forEach((tasks) => {
       let inputText = _("inputText");
-      inputText.appendChild(display(boys));
+      inputText.appendChild(display(tasks));
     });
   }
-  if (localGirl) {
-    localGirl.forEach((girls) => {
+  if (localOngoing) {
+    localOngoing.forEach((taskOngoing) => {
       let onGoingText = _("onGoingText");
-      onGoingText.appendChild(display(girls));
+      onGoingText.appendChild(display(taskOngoing));
     });
   }
   if (isCompleted) {
@@ -126,12 +133,7 @@ window.addEventListener("load", (event) => {
   }
 });
 
-function removeActive(Task) {
-  tasks.forEach((task) => {
-    task.classList.remove("active");
-  });
-  Task.classList.add("active");
-}
+
 
 function _(id) {
   return document.getElementById(id);
@@ -140,6 +142,7 @@ function _q(id) {
   return document.querySelector(id);
 }
 
+//Function for displaying task
 function display(params) {
   let uid = makeid(4);
   let newInput = document.createElement("div");
