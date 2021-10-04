@@ -10,7 +10,6 @@ function makeid(length) {
   return result;
 }
 
-
 const task1 = _("tasks1");
 const task2 = _("tasks2");
 const task3 = _("tasks3");
@@ -42,10 +41,10 @@ task3.addEventListener("click", () => {
 });
 
 function removeActive(Task) {
-    tasks.forEach((task) => {
-      task.classList.remove("active");
-    });
-    Task.classList.add("active");
+  tasks.forEach((task) => {
+    task.classList.remove("active");
+  });
+  Task.classList.add("active");
 }
 
 let task = [];
@@ -55,11 +54,10 @@ let completed = [];
 addButton.addEventListener("click", () => {
   let myTask = document.getElementById("myText").value;
   let inputText = _("inputText");
-  if (myTask != "") {
+  if (myTask != "" && myTask.trim() != "") {
     inputText.appendChild(display(myTask));
     task.push(myTask);
-    console.log(task);
-    localStorage.setItem("todo-elements", JSON.stringify(task));
+    localStorage.setItem("todo-task", JSON.stringify(task));
   }
   document.getElementById("myText").value = "";
 });
@@ -69,10 +67,10 @@ moveButton.addEventListener("click", function (index) {
   checkBox.forEach((checkbox) => {
     if (checkbox.checked) {
       let parentText = checkbox.parentNode;
-      let shit = task.splice(index, 1);
-      localStorage.setItem("todo-elements", JSON.stringify(task));
-      ongoing.push(shit);
-      localStorage.setItem("todo-elements2", JSON.stringify(ongoing));
+      let newTask = task.splice(index, 1);
+      localStorage.setItem("todo-task", JSON.stringify(task));
+      ongoing.push(newTask);
+      localStorage.setItem("todo-ongoing", JSON.stringify(ongoing));
       let childText = parentText.children[1].children[0].textContent;
       let onGoingText = _("onGoingText");
       onGoingText.appendChild(display(childText));
@@ -89,7 +87,7 @@ completeButton.addEventListener("click", function (index) {
       let complete = ongoing.splice(index, 1);
       completed.push(complete);
       localStorage.setItem("todo-completed", JSON.stringify(completed));
-      localStorage.setItem("todo-elements2", JSON.stringify(ongoing));
+      localStorage.setItem("todo-ongoing", JSON.stringify(ongoing));
       let childText = parentText.children[1].children[0].textContent;
       let completedText = _("completedText");
       completedText.appendChild(display(childText));
@@ -102,6 +100,7 @@ deleteButton.addEventListener("click", function (index) {
   const checkBox = document.querySelectorAll(".checkBox");
   checkBox.forEach((checkbox) => {
     if (checkbox.checked) {
+      completed.splice(index, 1);
       localStorage.setItem("todo-completed", JSON.stringify(completed));
       checkbox.parentNode.innerHTML = "";
     }
@@ -110,17 +109,17 @@ deleteButton.addEventListener("click", function (index) {
 
 //On reload, fetch from local storage
 window.addEventListener("load", (event) => {
-  const localTask = JSON.parse(localStorage.getItem("todo-elements"));
-  const localOngoing = JSON.parse(localStorage.getItem("todo-elements2"));
+  const isTask = JSON.parse(localStorage.getItem("todo-task"));
+  const isOngoing = JSON.parse(localStorage.getItem("todo-ongoing"));
   const isCompleted = JSON.parse(localStorage.getItem("todo-completed"));
-  if (localTask) {
-    localTask.forEach((tasks) => {
+  if (isTask) {
+    isTask.forEach((tasks) => {
       let inputText = _("inputText");
       inputText.appendChild(display(tasks));
     });
   }
-  if (localOngoing) {
-    localOngoing.forEach((taskOngoing) => {
+  if (isOngoing) {
+    isOngoing.forEach((taskOngoing) => {
       let onGoingText = _("onGoingText");
       onGoingText.appendChild(display(taskOngoing));
     });
@@ -132,8 +131,6 @@ window.addEventListener("load", (event) => {
     });
   }
 });
-
-
 
 function _(id) {
   return document.getElementById(id);
